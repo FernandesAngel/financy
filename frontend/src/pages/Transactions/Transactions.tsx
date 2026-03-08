@@ -30,6 +30,7 @@ import { TransactionRow } from "./components/TransactionRow";
 import { Card, CardContent } from "../../components/ui/card";
 import { Label } from "../../components/ui/label";
 import { Input } from "../../components/ui/input";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { GET_CATEGORIES } from "../../lib/graphql/queries/Categories";
 import { CreateTransactionDialog } from "./components/CreateTransactionDialog";
 
@@ -253,8 +254,8 @@ export function Transactions() {
             </TableBody>
             <TableFooter className="bg-white">
               <TableRow>
-                <TableCell colSpan={3}>
-                  {start} - {end} | {total}
+                <TableCell colSpan={3} className="font-normal text-zinc-500">
+                  {start} - {end} | {total} resultados
                 </TableCell>
 
                 <TableCell colSpan={3} className="text-end">
@@ -265,7 +266,7 @@ export function Transactions() {
                       disabled={page === 1}
                       onClick={() => setPage((p) => p - 1)}
                     >
-                      Prev
+                      <ChevronLeft size={14} />
                     </Button>
 
                     {Array.from({ length: totalPages }).map((_, i) => {
@@ -289,7 +290,7 @@ export function Transactions() {
                       disabled={page === totalPages}
                       onClick={() => setPage((p) => p + 1)}
                     >
-                      Next
+                      <ChevronRight size={14} />
                     </Button>
                   </div>
                 </TableCell>
